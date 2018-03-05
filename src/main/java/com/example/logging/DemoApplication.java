@@ -16,6 +16,7 @@ public class DemoApplication {
     private final static Logger logger = LoggerFactory.getLogger("threadCall");
 
     public static void main(String[] args) {
+        // Setting up the standard err/out interceptors
         System.setErr(new LoggerInterceptor(System.err));
         System.setOut(new LoggerInterceptor(System.out));
 
