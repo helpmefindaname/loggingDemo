@@ -1,5 +1,6 @@
 package com.example.logging;
 
+import com.example.logging.interceptor.LoggerInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

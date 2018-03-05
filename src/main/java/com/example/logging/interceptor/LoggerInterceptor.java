@@ -1,4 +1,4 @@
-package com.example.logging;
+package com.example.logging.interceptor;
 
 import org.slf4j.MDC;
 
@@ -10,7 +10,7 @@ import java.io.PrintStream;
  */
 public class LoggerInterceptor extends PrintStream {
 
-    LoggerInterceptor(OutputStream out) {
+    public LoggerInterceptor(OutputStream out) {
         super(out);
     }
 
