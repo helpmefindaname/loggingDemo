@@ -15,13 +15,13 @@ public class DemoApplication {
 
     private final static Logger logger = LoggerFactory.getLogger("threadCall");
 
-	public static void main(String[] args) {
-	    System.setErr(new LoggerInterceptor(System.err));
+    public static void main(String[] args) {
+        System.setErr(new LoggerInterceptor(System.err));
         System.setOut(new LoggerInterceptor(System.out));
 
-		SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(DemoApplication.class, args);
 
-		for (int i = 0; i < 5; ++i) {
+        for (int i = 0; i < 5; ++i) {
             final int index = i;
             Runnable runnable = () -> {
 
@@ -37,7 +37,7 @@ public class DemoApplication {
             };
             new Thread(runnable).start();
         }
-	}
+    }
 
     private static void desyncThreads() {
         Random random = new Random();
@@ -53,7 +53,7 @@ public class DemoApplication {
     /**
      * Use MDC
      */
-	private static void logThroughLogback(String projectName) {
+    private static void logThroughLogback(String projectName) {
         logger.info("Info from: " + projectName);
         logger.warn("Warn from: " + projectName);
     }
@@ -62,24 +62,24 @@ public class DemoApplication {
      * Use LoggerInterceptor
      */
     private static void logThroughStdErr(String projectName) {
-	    try {
-	        Integer.parseInt(projectName);
+        try {
+            Integer.parseInt(projectName);
         } catch (NumberFormatException e) {
-	        e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
     /**
      * Injecting the project name only works in following cases:
-     *  1. You control the thread creation and can manipulate MDC in the child thread
-     *  2. You can decide in a LoggerInterceptor which project is logging (in this case you wouldn't need MDC at all)
+     * 1. You control the thread creation and can manipulate MDC in the child thread
+     * 2. You can decide in a LoggerInterceptor which project is logging (in this case you wouldn't need MDC at all)
      */
     private static void spawnChildThreadAndLog(String projectName) {
-	    Runnable runnable = () -> {
-	        String msg = String.format("Child thread spawned from %s", projectName);
-	        logger.info(msg);
+        Runnable runnable = () -> {
+            String msg = String.format("Child thread spawned from %s", projectName);
+            logger.info(msg);
             System.out.println(msg);
         };
-	    new Thread(runnable).start();
+        new Thread(runnable).start();
     }
 }
