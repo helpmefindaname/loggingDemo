@@ -54,8 +54,8 @@ public class DemoApplication {
      * Use MDC
      */
     private static void logThroughLogback(String projectName) {
-        logger.info("Info from: " + projectName);
-        logger.warn("Warn from: " + projectName);
+        logger.info(String.format("Info from: %s", projectName));
+        logger.warn(String.format("Warn from: %s", projectName));
     }
 
     /**
