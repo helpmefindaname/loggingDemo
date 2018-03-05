@@ -1,0 +1,69 @@
+Demo Spring application to show the usage of the mapped diagnostic context in logback/slf4j. It further showcases a stdout/stderr interceptor for dynamic logging manipulation.
+
+
+Example log output:
+
+2018-03-05 11:35:01.224  INFO 3314 --- [           main] com.example.logging.DemoApplication      : Started DemoApplication in 0.956 seconds (JVM running for 1.592)
+Project 0: java.lang.NumberFormatException: For input string: "Project 0"
+Project 0: 	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+Project 0: 	at java.lang.Integer.parseInt(Integer.java:580)
+Project 0: 	at java.lang.Integer.parseInt(Integer.java:615)
+Project 0: 	at com.example.logging.DemoApplication.logThroughStdErr(DemoApplication.java:67)
+Project 0: 	at com.example.logging.DemoApplication.lambda$main$0(DemoApplication.java:32)
+Project 0: 	at java.lang.Thread.run(Thread.java:748)
+Project 4: java.lang.NumberFormatException: For input string: "Project 4"
+Project 4: 	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+Project 4: 	at java.lang.Integer.parseInt(Integer.java:580)
+Project 4: 	at java.lang.Integer.parseInt(Integer.java:615)
+Project 4: 	at com.example.logging.DemoApplication.logThroughStdErr(DemoApplication.java:67)
+Project 4: 	at com.example.logging.DemoApplication.lambda$main$0(DemoApplication.java:32)
+Project 4: 	at java.lang.Thread.run(Thread.java:748)
+Project 3: java.lang.NumberFormatException: For input string: "Project 3"
+Project 3: 	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+Project 3: 	at java.lang.Integer.parseInt(Integer.java:580)
+Project 3: 	at java.lang.Integer.parseInt(Integer.java:615)
+Project 3: 	at com.example.logging.DemoApplication.logThroughStdErr(DemoApplication.java:67)
+Project 3: 	at com.example.logging.DemoApplication.lambda$main$0(DemoApplication.java:32)
+Project 3: 	at java.lang.Thread.run(Thread.java:748)
+Project 1: java.lang.NumberFormatException: For input string: "Project 1"
+Project 1: 	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+Project 1: 	at java.lang.Integer.parseInt(Integer.java:580)
+Project 1: 	at java.lang.Integer.parseInt(Integer.java:615)
+Project 1: 	at com.example.logging.DemoApplication.logThroughStdErr(DemoApplication.java:67)
+Project 1: 	at com.example.logging.DemoApplication.lambda$main$0(DemoApplication.java:32)
+Project 1: 	at java.lang.Thread.run(Thread.java:748)
+Project 2: java.lang.NumberFormatException: For input string: "Project 2"
+Project 2: 	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+Project 2: 	at java.lang.Integer.parseInt(Integer.java:580)
+Project 2: 	at java.lang.Integer.parseInt(Integer.java:615)
+Project 2: 	at com.example.logging.DemoApplication.logThroughStdErr(DemoApplication.java:67)
+Project 2: 	at com.example.logging.DemoApplication.lambda$main$0(DemoApplication.java:32)
+Project 2: 	at java.lang.Thread.run(Thread.java:748)
+2018-03-05 11:35:01.305 Project 0 WARN 3314 --- [       Thread-6] threadCall                               : Waited for 73 ms
+2018-03-05 11:35:01.305 Project 0 INFO 3314 --- [       Thread-6] threadCall                               : Info from: Project 0
+2018-03-05 11:35:01.305 Project 0 WARN 3314 --- [       Thread-6] threadCall                               : Warn from: Project 0
+2018-03-05 11:35:01.306  INFO 3314 --- [      Thread-11] threadCall                               : Child thread spawned from Project 0
+Child thread spawned from Project 0
+2018-03-05 11:35:01.316 Project 4 WARN 3314 --- [      Thread-10] threadCall                               : Waited for 85 ms
+2018-03-05 11:35:01.317 Project 4 INFO 3314 --- [      Thread-10] threadCall                               : Info from: Project 4
+2018-03-05 11:35:01.317 Project 4 WARN 3314 --- [      Thread-10] threadCall                               : Warn from: Project 4
+2018-03-05 11:35:01.317  INFO 3314 --- [      Thread-12] threadCall                               : Child thread spawned from Project 4
+Child thread spawned from Project 4
+2018-03-05 11:35:01.472 Project 3 WARN 3314 --- [       Thread-9] threadCall                               : Waited for 240 ms
+2018-03-05 11:35:01.473 Project 3 INFO 3314 --- [       Thread-9] threadCall                               : Info from: Project 3
+2018-03-05 11:35:01.473 Project 3 WARN 3314 --- [       Thread-9] threadCall                               : Warn from: Project 3
+2018-03-05 11:35:01.473  INFO 3314 --- [      Thread-13] threadCall                               : Child thread spawned from Project 3
+Child thread spawned from Project 3
+2018-03-05 11:35:01.480 Project 1 WARN 3314 --- [       Thread-7] threadCall                               : Waited for 246 ms
+2018-03-05 11:35:01.480 Project 1 INFO 3314 --- [       Thread-7] threadCall                               : Info from: Project 1
+2018-03-05 11:35:01.480 Project 1 WARN 3314 --- [       Thread-7] threadCall                               : Warn from: Project 1
+2018-03-05 11:35:01.481  INFO 3314 --- [      Thread-14] threadCall                               : Child thread spawned from Project 1
+Child thread spawned from Project 1
+Disconnected from the target VM, address: '127.0.0.1:56512', transport: 'socket'
+2018-03-05 11:35:01.695 Project 2 WARN 3314 --- [       Thread-8] threadCall                               : Waited for 461 ms
+2018-03-05 11:35:01.695 Project 2 INFO 3314 --- [       Thread-8] threadCall                               : Info from: Project 2
+2018-03-05 11:35:01.695 Project 2 WARN 3314 --- [       Thread-8] threadCall                               : Warn from: Project 2
+2018-03-05 11:35:01.695  INFO 3314 --- [      Thread-15] threadCall                               : Child thread spawned from Project 2
+Child thread spawned from Project 2
+2018-03-05 11:35:01.696  INFO 3314 --- [       Thread-5] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@6f36c2f0: startup date [Mon Mar 05 11:35:00 GMT 2018]; root of context hierarchy
+2018-03-05 11:35:01.698  INFO 3314 --- [       Thread-5] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
