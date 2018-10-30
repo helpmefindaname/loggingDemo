@@ -14,8 +14,6 @@ public class LoggerInterceptor extends PrintStream {
         super(out);
     }
 
-    //TODO override the other println methods (avoid print methods)
-
     @Override
     public void println(String x) {
         final String projectName = MDC.get("projectName");
